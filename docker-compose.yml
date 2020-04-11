@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+  car-back-end:
+    build: ./car-back-end
+    restart: always
+    volumes:
+      - ./car-back-end/src:/app/src
+      - ./car-back-end/test:/app/test
+      - ./car-back-end/migrations:/app/migrations
+    ports:
+      - 127.0.0.1:9200:3000/tcp
+      - 9252:9252 # debugger port
+    command: npm run start
