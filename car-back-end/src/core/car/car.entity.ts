@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, ManyToMany } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from 'typeorm';
 import { Manufacturer } from '../manufacturer/manufacturer.entity';
 import { Owner } from '../owner/owner.entity';
 
@@ -23,7 +23,7 @@ export class Car {
   })
   firstRegistrationDate: Date;
 
-  @ManyToMany(() => Owner, owner => owner.cars, {
+  @OneToMany(() => Owner, owner => owner.car, {
     cascade: ['insert'],
   })
   owners: Owner[];

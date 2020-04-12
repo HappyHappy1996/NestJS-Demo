@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 // controllers
 import { CarController } from './car/car.controller';
 import { ManufacturerController } from './manufacturer/manufacturer.controller';
+import { ManagementController } from './management/management.controller';
 
 // services
 import { CarService } from './car/car.service';
@@ -35,6 +36,7 @@ import { OwnerRepository } from './owner/owner.repository';
   controllers: [
     CarController,
     ManufacturerController,
+    ManagementController,
   ],
 })
 export class CoreModule {}

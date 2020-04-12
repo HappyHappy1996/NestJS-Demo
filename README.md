@@ -36,16 +36,13 @@ $ docker-compose up --build
 open browser at localhost:9200/cars
 ```
 
-## Support
+## Goals
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+This component will expose a REST api providing CRUD operations to fetch one or several cars, create,
+update and delete a car. Though this api, it will also be possible:
 
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-  Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+- Fetch only the manufacturer data for a given car (without any manufacturers dedicated APIs – i.e.
+only by using the car API)
+- To trigger a process which will automatically remove the owners who bought their cars before the last
+18 months and apply a discount of 20% to all cars having a date of first registration between 12 and
+18 months.

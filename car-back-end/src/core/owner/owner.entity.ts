@@ -1,4 +1,4 @@
-import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Car } from '../car/car.entity';
 
 @Entity({
@@ -6,6 +6,7 @@ import { Car } from '../car/car.entity';
 })
 export class Owner {
   @PrimaryGeneratedColumn('uuid', { name: 'id' })
+  // it should be a foreign key to some user table
   id: string;
 
   @Column({ type: 'text', name: 'name', nullable: false })
@@ -19,7 +20,6 @@ export class Owner {
   })
   purchaseDate: Date;
 
-  @ManyToMany(() => Car, car => car.owners)
-  @JoinTable()
-  cars: Car[];
+  @ManyToOne(() => Car, car => car.owners)
+  car: Car;
 }

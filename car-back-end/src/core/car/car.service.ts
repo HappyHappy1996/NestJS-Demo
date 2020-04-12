@@ -1,3 +1,4 @@
+import * as moment from 'moment';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { Car } from './car.entity';
 import { CarDto } from './dto/car.dto';
@@ -49,6 +50,15 @@ export class CarService {
     this.build(existingCar, carDto, manufacturer, owners);
 
     return this.carRepository.save(existingCar);
+  }
+
+  applyDiscount() {
+    const startDate = moment().subtract(18, 'months');
+    const endDate = moment().subtract(12, 'months');
+    const DISCOUNT_IN_PERCENTS = 20;
+    const pricePercents = 100 - DISCOUNT_IN_PERCENTS;
+
+    return this.carRepository.applyDiscountForPeriod(startDate, endDate, pricePercents);
   }
 
   remove(id: string) {
