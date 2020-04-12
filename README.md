@@ -32,23 +32,8 @@
 
 ```bash
 # development
-$ cd scripts
-$ ./up.sh
-open browser at localhost:9200
-```
-
-## Test
-
-```bash
-# unit tests
-$ cd scripts
-$ ./test.sh
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+$ docker-compose up --build
+open browser at localhost:9200/cars
 ```
 
 ## Support

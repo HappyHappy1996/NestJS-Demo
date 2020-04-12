@@ -1,0 +1,20 @@
+{
+   "type": "postgres",
+   "url": "postgres://postgres:password@postgres:5432/car_db",
+   "synchronize": false,
+   "logging": false,
+   "entities": [
+      "src/**/*.entity.ts"
+   ],
+   "migrations": [
+      "migrations/**/*.ts"
+   ],
+   "subscribers": [
+      "src/subscriber/**/*.ts"
+   ],
+   "cli": {
+      "entitiesDir": "src/entity",
+      "migrationsDir": "migrations",
+      "subscribersDir": "src/subscriber"
+   }
+}

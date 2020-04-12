@@ -1,14 +1,29 @@
 version: '3.7'
 
 services:
+  postgres:
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432/tcp
+    volumes:
+      - postgres_data:/var/lib/postgresql/data:rw
+    env_file: ./postgres/.env
+
   car-back-end:
     build: ./car-back-end
     restart: always
+    depends_on:
+      - postgres
+    ports:
+      - 127.0.0.1:9200:3000/tcp
+      - 9252:9252 # debugger port
     volumes:
       - ./car-back-end/src:/app/src
       - ./car-back-end/test:/app/test
       - ./car-back-end/migrations:/app/migrations
-    ports:
-      - 127.0.0.1:9200:3000/tcp
-      - 9252:9252 # debugger port
-    command: npm run start
+    env_file: ./car-back-end/.env
+    command: npm run start:debug
+
+volumes:
+  postgres_data:
