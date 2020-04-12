@@ -7,4 +7,13 @@ export class CarRepository extends Repository<Car> {
   findById(id: string): Promise<Car> {
     return this.findOne({ id });
   }
+
+  findByIdWithManufacturer(id: string): Promise<Car> {
+    return this.findOne({
+      where: {
+        id
+      },
+      relations: ['manufacturer'],
+    });
+  }
 }

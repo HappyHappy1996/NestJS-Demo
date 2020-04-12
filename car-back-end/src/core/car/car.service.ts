@@ -23,6 +23,10 @@ export class CarService {
     return this.carRepository.findById(id);
   }
 
+  findByIdWithManufacturer(id: string): Promise<Car> {
+    return this.carRepository.findByIdWithManufacturer(id);
+  }
+
   async create(createCarDto: CarDto) {
     const {
       manufacturer, owners
