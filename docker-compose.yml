@@ -3,7 +3,7 @@ version: '3.7'
 services:
   postgres:
     image: postgres
-    restart: always
+    restart: unless-stopped
     ports:
       - 5432:5432/tcp
     volumes:
@@ -12,7 +12,7 @@ services:
 
   car-back-end:
     build: ./car-back-end
-    restart: always
+    restart: unless-stopped
     depends_on:
       - postgres
     ports:
